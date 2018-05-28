@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-size: 0;
+            background: #f4f4f4;
+        }
+
+        #outer {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #outer div {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #outer img {
+            width: 600px;
+            height: 600px;
+        }
+
+        #outer ul {
+            width: 100%;
+            position: absolute;
+            bottom: 5px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #outer ul li {
+            display: inline-block;
+            width: 88px;
+            height: 88px;
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        #outer ul li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        :target {
+            z-index: 5;
+        }
+
+        /*bg1的动画*/
+        #bg1:target {
+            animation: myTranslate 1s ease-in;
+        }
+
+        @keyframes myTranslate {
+            0% {
+                transform: translate(-500px);
+            }
+            15%, 45% {
+                transform: translate(-150px);
+            }
+            30%, 60% {
+                transform: translate(150px);
+            }
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        #bg2:target {
+            animation: myScale 1s linear;
+        }
+
+        @keyframes myScale {
+            from {
+                transform: scale(0) rotate(0);
+            }
+            to {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        /*bg3的动画*/
+        #bg3:target {
+            animation: mySlide 0.5s ease-in-out;
+        }
+
+        @keyframes mySlide {
+            from {
+                transform: translate(0, -500px);
+            }
+            to {
+                transform: translate(0, 0);
+            }
+        }
+
+        /*bg4的动画*/
+        #bg4:target {
+            animation: fourScale 0.5s linear;
+        }
+
+        @keyframes fourScale {
+            0% {
+                transform: scale(1.9);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /*bg5的动画*/
+        #bg5:target {
+            animation: fiveScale 0.5s linear;
+        }
+
+        @keyframes fiveScale {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .main {
+            width: 600px;
+            height: 600px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin: -300px 0 0 -300px;
+        }
+
+        .main ul {
+            list-style: none;
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -200px 0 0 -200px;
+            transform-style: preserve-3d;
+            animation: move 2s ease infinite;
+
+        }
+
+        .main ul li {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .main ul li img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /*前后面*/
+        .main ul li:nth-child(1) {
+            transform: translateZ(200px);
+        }
+
+        .main ul li:nth-child(2) {
+            transform: translateZ(-200px) rotateY(180deg);
+        }
+
+        /*左右面*/
+        .main ul li:nth-child(3) {
+            transform: translateX(-200px) rotateY(-90deg);
+        }
+
+        .main ul li:nth-child(4) {
+            transform: translateX(200px) rotateY(90deg);
+        }
+
+        /*上下面*/
+        .main ul li:nth-child(5) {
+            transform: translateY(-200px) rotateX(90deg);
+        }
+
+        .main ul li:nth-child(6) {
+            transform: translateY(200px) rotateX(-90deg);
+        }
+
+        @keyframes move {
+            0%, 100% {
+                transform: scale(.6) rotateX(30deg) rotateY(45deg);
+            }
+            50% {
+                transform: scale(.6) rotateX(90deg) rotateY(135deg);
+            }
+        }
+    </style>
+    <!--<link rel="stylesheet" href="cs/reset.min.css">-->
+</head>
+<body>
+
+<div id="outer">
+    <div id="bg1"><img src="images/1.JPG" alt=""></div>
+    <div id="bg2"><img src="images/2.JPG" alt=""></div>
+    <div id="bg3"><img src="images/3.JPG" alt=""></div>
+    <div id="bg4"><img src="images/4.JPG" alt=""></div>
+    <div id="bg5"><img src="images/5.JPG" alt=""></div>
+    <ul>
+        <li><a href="#bg1"><img src="images/6.JPG" alt=""></a></li>
+        <li><a href="#bg4"><img src="images/9.JPG" alt=""></a></li>
+        <li><a href="#bg2"><img src="images/7.JPG" alt=""></a></li>
+        <li><a href="#bg5"><img src="images/10.JPG" alt=""></a></li>
+        <li><a href="#bg3"><img src="images/8.JPG" alt=""></a></li>
+    </ul>
+</div>
+<div class="main">
+    <ul class="content">
+        <li>
+            <img src="images/6.JPG" alt="">
+        </li>
+        <li>
+            <img src="images/7.JPG" alt="">
+        </li>
+        <li>
+            <img src="images/9.JPG" alt="">
+        </li>
+        <li>
+            <img src="images/7.JPG" alt="">
+        </li>
+        <li>
+            <img src="images/8.JPG" alt="">
+        </li>
+        <li>
+            <img src="images/10.JPG" alt="">
+        </li>
+    </ul>
+</div>
+
+
+</body>
+</html>
